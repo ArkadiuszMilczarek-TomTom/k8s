@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dashboard-ingress
+spec:
+  rules:
+    - host: mongofront.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: mongo-express-service
+                port:
+                  number: 8081
+            path: /
+            pathType: Prefix
